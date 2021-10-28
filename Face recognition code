@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 from os import listdir
 from os.path import isfile, join
+from gtts import gTTS
+from playsound import playsound
 
 os.system('pip install opencv_contrib_python')
 
@@ -100,6 +102,8 @@ def face_detector(img, size=0.5):
     return img, roi
 
 
+name2 = " "
+m = 0
 cap = cv2.VideoCapture(0)
 while True:
 
@@ -120,6 +124,9 @@ while True:
         if confidence > 75:
             cv2.putText(image, "Hi, " + ind[result[0]], (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
             cv2.imshow('Face Cropper', image)
+            name2 = ind[result[0]]
+            break
+
 
         else:
             cv2.putText(image, "Unknown Person", (250, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 2)
@@ -133,6 +140,25 @@ while True:
 
     if cv2.waitKey(1) == 13:
         break
+text_val = "Hi" + name2
+
+# Here are converting in English Language
+language = 'en'
+
+# Passing the text and language to the engine,
+# here we have assign slow=False. Which denotes
+# the module that the transformed audio should
+# have a high speed
+obj = gTTS(text=text_val, lang=language, slow=False)
+
+# Here we are saving the transformed audio in a mp3 file named
+# exam.mp3
+
+obj.save("Audio.mp3")
+
+# Play the exam.mp3 file
+playsound("Audio.mp3")
 
 cap.release()
 cv2.destroyAllWindows()
+
