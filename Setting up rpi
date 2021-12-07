@@ -3,9 +3,8 @@ This website will help you a lot(https://roboticsbackend.com/enable-ssh-on-raspb
 (https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/)
 
 
-
-1 way
-without monitor,
+(Bosss.....find a way to capture the ip address of your rpi..then things may work)
+1 way without monitor,
 1)go to root folder of rpi called 'boot'
 2)Create file "wpa_supplicant.conf"
   Note: The extension of the file should be .conf itself, not txt or anything else.
