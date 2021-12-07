@@ -1,0 +1,25 @@
+This website will help you a lot(https://roboticsbackend.com/enable-ssh-on-raspberry-pi-raspbian/)
+(https://community.wia.io/d/11-how-to-set-up-a-raspberry-pi-without-an-external-monitor-or-keyboard)
+(https://roboticsbackend.com/raspberry-pi-arduino-serial-communication/)
+
+
+
+1 way
+without monitor,
+1)go to root folder of rpi called 'boot'
+2)Create file "wpa_supplicant.conf"
+  Note: The extension of the file should be .conf itself, not txt or anything else.
+  Enter the following code
+  
+%%
+country=IN                    % replace with your country code
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+network={
+    ssid="WIFI_NETWORK_NAME"  % Enter your wifi name
+    psk="WIFI_PASSWORD"       % Enter your wifi password
+    key_mgmt=WPA-PSK
+}
+%%
+
+3)Create another file in the root folder(boot) called "ssh"(no extensions)
+4) Now remove the sd card
